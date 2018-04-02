@@ -42,37 +42,52 @@ $(function () {
         }
     }
 
+    //
+    //    Column.prototype.removeColumn = function () {
+    //        this.$element.remove();
+    //    };
+    //
+    //    Column.prototype.addCard = function (card) {
+    //        this.$element.children('ul').append(card.$element);
+    //    };
 
-    Column.prototype.removeColumn = function () {
-        this.$element.remove();
+
+    Column.prototype = {
+        addCard: function (card) {
+            this.$element.children('ul').append(card.$element);
+        },
+        removeColumn: function () {
+            this.$element.remove();
+        }
     };
 
-    Column.prototype.addCard = function (card) {
-        this.$element.children('ul').append(card.$element);
-    };
 
-
-    function Card(describtion) {
+    function Card(description) {
         var self = this;
         this.id = randomString();
-        this.describtion = describtion;
+        this.description = description;
         this.$element = createCard();
 
         function createCard() {
             //Card Components
-            var $card = $('li').addClass('card');
-            var $cardDescribtion = $('<p>').addClass('card-describtion').text(self.describtion);
+            var $card = $('<li>').addClass('card');
+            var $cardDescription = $('<p>').addClass('card-description').text(self.description);
             var $cardDelete = $('<button>').addClass('btn-delete').text('x');
+            var $cardEdit = $('<button>').addClass('btn-edit').text('edit');
 
             //Card events
             $cardDelete.click(function () {
                 self.removeCard();
             });
 
+            $cardEdit.click(function () {
+                self.editCard();
+            });
             //Adding card elements
 
-            $card.append($cardDescribtion)
-                .append($cardDelete);
+            $card.append($cardDescription)
+                .append($cardDelete)
+                .append($cardEdit);
 
             return $card;
         }
@@ -81,6 +96,12 @@ $(function () {
     Card.prototype.removeCard = function () {
         this.$element.remove();
     };
+    
+    Card.prototype.editCard = function () {
+        var self = this;
+        var name = prompt('Enter new name of the card');
+        this.$element.children('.card-description').text(name);
+    }
 
 
     //Creating Board
