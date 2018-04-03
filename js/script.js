@@ -21,9 +21,9 @@ $(function () {
             var $column = $('<div>').addClass('column');
             var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
             var $columnCardList = $('<ul>').addClass('column-card-list');
-            var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-            var $columnAddCard = $('<button>').addClass('add-card').text('Add a card');
-            var $columnEdit = $('<button>').addClass('column-edit').text('edit');
+            var $columnDelete = $('<button>').addClass('col-btn-delete').html('<i class="fa fa-trash" aria-hidden="true"></i>');
+            var $columnAddCard = $('<button>').addClass('add-card').text('+');
+            var $columnEdit = $('<button>').addClass('column-edit').html('<i class="fa fa-pencil" aria-hidden="true"></i>');
 
             //Column events
             $columnDelete.click(function () {
@@ -109,8 +109,8 @@ $(function () {
             //Card Components
             var $card = $('<li>').addClass('card');
             var $cardDescription = $('<p>').addClass('card-description').text(self.description);
-            var $cardDelete = $('<button>').addClass('btn-delete').text('x');
-            var $cardEdit = $('<button>').addClass('btn-edit').text('edit');
+            var $cardDelete = $('<button>').addClass('card-btn-delete').html('<i class="fa fa-trash" aria-hidden="true"></i>');
+            var $cardEdit = $('<button>').addClass('card-btn-edit').html('<i class="fa fa-pencil" aria-hidden="true"></i>');
 
             //Card events
             $cardDelete.click(function () {
@@ -133,12 +133,6 @@ $(function () {
     Card.prototype.removeCard = function () {
         this.$element.remove();
     };
-
-    //                Card.prototype.editCard = function () {
-    //                    var name = prompt('Enter new name of the card');
-    //                    this.$element.children('.card-description').text(name);
-    //                }
-
 
 
     Card.prototype.editCard = function () {
@@ -179,9 +173,9 @@ $(function () {
     }
 
     function initSortableColumn() {
-        $('.column').sortable({
-                connectWith: '.column',
-                placeholder: 'card-placeholder'
+        $('.column-container').sortable({
+                connectWith: '.column-container',
+                placeholder: 'column-placeholder'
             })
             .disableSelection();
     }
@@ -247,5 +241,37 @@ $(function () {
     }
 
 
+    //CLOCK
+    
+    
+
+    
+    
+var clockDate = $('<p>').appendTo("#clock");
+var clockTime = $('<p>').appendTo("#clock");
+    
+
+function getDate(){
+
+	var date = new Date();
+	
+	var day = date.getDate();
+	var month = date.getMonth() < 10 ? "0" + (date.getMonth() +1) : date.getMonth();
+	var year = date.getFullYear();
+	var hour = date.getHours();
+	var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+	var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+	
+	var todayDate = day + "/" + month + "/" + year;
+	var todayTime = hour + ":" + minute + ":" + second;	
+
+	clockDate.text(todayDate);
+	clockTime.text(todayTime); 
+	
+	setTimeout(function(){getDate()}, 1000);
+	
+
+}
+getDate();
 
 })

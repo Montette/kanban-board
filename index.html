@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Trello</title>
+     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/alertify.core.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     
 	<div id="board" class="board">
-        <h1>Kanban board</h1>
+       <header class="header">
+       <div id="clock" class="clock"></div>
+        <h1 class="header_title">Kanban board</h1>
         <button class="create-column">Add a column</button>
+        </header>
+        <main class="container">
         <div class="column-container"></div>
+        </main>
 	</div>
     <script src="js/alertify.min.js"></script>
 

@@ -1,8 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
 /*
-    background-image: url(../images/7123.jpg);
+    background-image: url(../images/1105.jpg);
+ 
     background-size: cover;
+    background-position: center
 */
     
+}
+
+/*
+.container {
     
 }
+*/
+.column-container {
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.header {
+    text-align: center;
+    background-color: rgba(0,0,0,.2);
+    padding: 20px 200px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.create-column {
+/*
+     position: absolute;
+    right: 100px;
+*/
+    background-color: #376461;
+    height: 30px;
+    font-size: 18px;
+    line-height: 18px;
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    padding: 0 20px;
+}
+
+.clock {
+/*
+    position: absolute;
+    left: 100px;
+*/
+}
+
+.column {
+   position: relative; 
+    margin: 20px;
+    width: calc(33.3% - 40px);       
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px dimgray;
+    padding-bottom: 45px;
+    
+}
+
+.column-placeholder {
+    margin: 20px;
+    width: calc(33.3% - 40px);       
+    border-radius: 10px;
+    border: dashed 1px grey;
+    padding-bottom: 45px; 
+    height: 150px;
+}
+
+.column-title {
+    color: #fff;
+    background-color:#96939B;
+/*    background-color: #7bafad;*/
+    border-radius: 10px 10px 0 0;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+.col-btn-delete,
+.column-edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    font-size: 20px;
+    line-height: 20px;
+    color: #fff;
+    background-color: #FC814A;
+    border-radius: 0 10px 0 0;
+    cursor: pointer;
+}
+
+.column-edit {
+    background-color: #564256;
+    border-radius: 0;
+    right: 40px;
+}
+
+.add-card {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background-color: #376461;
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
+    
+}
+
+.column-card-list {
+    list-style: none;
+    padding: 5px 20px;
+}
+
+.card {
+    padding: 5px 5px;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    min-height: 50px;
+    background-color: #F2F2F2;
+    
+}
+
+.card-btn-delete,
+.card-btn-edit {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right: 25px;
+    border: none;
+    color: #fff;
+    opacity: .1;
+    transition: 1s;
+    
+}
+
+.card-btn-delete:hover,
+.card-btn-edit:hover {
+    opacity:1;
+    cursor: pointer;
+}
+.card-btn-delete {
+    background-color: #FC814A;
+}
+
+.card-btn-edit {
+    right: 60px;
+    background-color: #564256;
+}
+
+.card-placeholder {
+    padding: 5px 5px;       
+    margin: 10px 0;
+    min-height: 50px;
+    border: dashed 1px grey;
+    
+}
+
+
+
+
+
+
