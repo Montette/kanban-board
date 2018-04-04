@@ -5,20 +5,18 @@
 }
 
 body {
-/*
-    background-image: url(../images/1105.jpg);
- 
+    background-image: url(../images/3147.jpg);
     background-size: cover;
-    background-position: center
-*/
-    
+    background-position: bottom;
+    background-repeat: no-repeat;
+    font-family: 'Rubik', sans-serif;
 }
 
-/*
-.container {
-    
+
+.board {
+    height: 100vh;
 }
-*/
+
 .column-container {
     max-width: 1200px;
     width: 100%;
@@ -31,66 +29,73 @@ body {
 
 .header {
     text-align: center;
-    background-color: rgba(0,0,0,.2);
+    background-color: rgba(0, 0, 0, .3);
     padding: 20px 200px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
 }
 
+.header_title {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 35px
+}
+
 .create-column {
-/*
-     position: absolute;
-    right: 100px;
-*/
-    background-color: #376461;
-    height: 30px;
+   background-color: #985E6D;
     font-size: 18px;
-    line-height: 18px;
     border: none;
     border-radius: 50px;
     color: #fff;
     cursor: pointer;
-    padding: 0 20px;
+    padding: 10px 20px;
+    opacity: .8;
+    transition: .3s;
+    font-weight: bold;
+}
+
+.create-column:hover {
+    opacity: 1;
+    cursor: pointer;
 }
 
 .clock {
-/*
-    position: absolute;
-    left: 100px;
-*/
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .column {
-   position: relative; 
+    position: relative;
     margin: 20px;
-    width: calc(33.3% - 40px);       
+    width: calc(33.3% - 40px);
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     box-shadow: 2px 2px 5px dimgray;
     padding-bottom: 45px;
-    
 }
 
 .column-placeholder {
     margin: 20px;
-    width: calc(33.3% - 40px);       
+    width: calc(33.3% - 40px);
     border-radius: 10px;
     border: dashed 1px grey;
-    padding-bottom: 45px; 
+    padding-bottom: 45px;
     height: 150px;
 }
 
 .column-title {
     color: #fff;
-    background-color:#96939B;
-/*    background-color: #7bafad;*/
+    background-color: #565656;
     border-radius: 10px 10px 0 0;
     height: 40px;
     line-height: 40px;
     padding-left: 10px;
+    cursor: move;
+    font-size: 22px;
 }
 
 .col-btn-delete,
@@ -104,15 +109,22 @@ body {
     font-size: 20px;
     line-height: 20px;
     color: #fff;
-    background-color: #FC814A;
+    background-color: #76323F;
     border-radius: 0 10px 0 0;
-    cursor: pointer;
+    transition: .3s;
+    opacity: 0.8;
 }
 
 .column-edit {
-    background-color: #564256;
+    background-color: #96858F;
     border-radius: 0;
     right: 40px;
+}
+
+.col-btn-delete:hover,
+.column-edit:hover {
+    cursor: pointer;
+    opacity: 1;
 }
 
 .add-card {
@@ -120,18 +132,27 @@ body {
     height: 30px;
     border-radius: 50%;
     border: none;
-    background-color: #376461;
+    background-color: #985E6D;
     color: #fff;
     font-size: 20px;
     position: absolute;
     bottom: 15px;
     right: 25px;
-    
+    cursor: pointer;
+    opacity: .8;
+    transition: .3s;
+}
+
+.add-card:hover {
+    opacity: 1;
+    cursor: pointer;
 }
 
 .column-card-list {
     list-style: none;
     padding: 5px 20px;
+    min-height: 50px;
+    height: 100%;
 }
 
 .card {
@@ -141,7 +162,9 @@ body {
     margin: 10px 0;
     min-height: 50px;
     background-color: #F2F2F2;
-    
+    cursor: move;
+    color: #565656;
+    font-size: 14px;
 }
 
 .card-btn-delete,
@@ -154,34 +177,28 @@ body {
     border: none;
     color: #fff;
     opacity: .1;
-    transition: 1s;
-    
+    transition: .3s;
 }
 
 .card-btn-delete:hover,
 .card-btn-edit:hover {
-    opacity:1;
+    opacity: 1;
     cursor: pointer;
 }
+
 .card-btn-delete {
-    background-color: #FC814A;
+    background-color: #76323F;
 }
 
 .card-btn-edit {
     right: 60px;
-    background-color: #564256;
+    background-color: #96858F;
 }
 
 .card-placeholder {
-    padding: 5px 5px;       
+    padding: 5px 5px;
     margin: 10px 0;
     min-height: 50px;
     border: dashed 1px grey;
-    
 }
-
-
-
-
-
 

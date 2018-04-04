@@ -32,9 +32,6 @@ $(function () {
 
             $columnAddCard.click(function () {
                 var name = "";
-
-
-
                 alertify.prompt("Enter card name", function (e, str) {
                     if (e) {
                         name = str;
@@ -199,10 +196,6 @@ $(function () {
                 }
             }, );
 
-
-
-
-
         });
 
     // CREATING COLUMNS
@@ -239,6 +232,9 @@ $(function () {
             buttonFocus: "ok"
         });
     }
+    
+    
+    
 
 
     //CLOCK
