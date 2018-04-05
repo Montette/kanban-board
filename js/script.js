@@ -47,9 +47,6 @@ $(function () {
             });
 
 
-
-
-
             $columnEdit.click(function () {
                 self.editColumn();
             });
@@ -178,7 +175,6 @@ $(function () {
     }
 
 
-
     $('.create-column')
         .click(function () {
             var name = "";
@@ -232,16 +228,11 @@ $(function () {
             buttonFocus: "ok"
         });
     }
-    
-    
-    
+     
 
 
     //CLOCK
-    
-    
-
-    
+        
     
 var clockDate = $('<p>').appendTo("#clock");
 var clockTime = $('<p>').appendTo("#clock");
