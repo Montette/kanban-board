@@ -11,7 +11,13 @@ var board = {
 function initSortable() {
     $('.column-card-list').sortable({
             connectWith: '.column-card-list',
-            placeholder: 'card-placeholder'
+            placeholder: 'card-placeholder',
+            receive: function(event, ui){
+            itemId = ui.item.get(0).id;
+            itemText = ui.item.get(0).innerText;
+            targetId = ui.item.get(0).parentNode.parentNode.id;
+            rememberPosition(itemId, itemText, targetId);
+        }
         })
         .disableSelection();
 }

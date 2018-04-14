@@ -6,7 +6,7 @@
 
       function createColumn() {
           //Column components
-          var $column = $('<div>').addClass('column');
+          var $column = $('<div>').attr('id', self.id).addClass('column');
           var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
           var $columnCardList = $('<ul>').addClass('column-card-list');
           var $columnDelete = $('<button>').addClass('col-btn-delete').html('<i class="fa fa-trash" aria-hidden="true"></i>');
