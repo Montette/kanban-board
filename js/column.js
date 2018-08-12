@@ -1,109 +1,99 @@
-  function Column(id, name) {
-      var self = this;
-      this.id = id;
-      this.name = name || 'No name given';
-      this.$element = createColumn();
 
-      function createColumn() {
-          //Column components
-          var $column = $('<div>').attr('id', self.id).addClass('column');
-          var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
-          var $columnCardList = $('<ul>').addClass('column-card-list');
-          var $columnDelete = $('<button>').addClass('col-btn-delete').html('<i class="fa fa-trash" aria-hidden="true"></i>');
-          var $columnAddCard = $('<button>').addClass('add-card').text('+');
-          var $columnEdit = $('<button>').addClass('column-edit').html('<i class="fa fa-pencil" aria-hidden="true"></i>');
+class Column {
+    constructor(id, name) {
+        this.name = name || 'No name given';
+        this.id = id;
+        this.$element = this.createColumn();
+    }
 
-          //Column events
-          $columnDelete.click(function () {
-              self.removeColumn();
-          });
+    createColumn() {
+        const $column = $('<div>').attr('id', this.id).addClass('column');
+        const $columnTitle = $('<h2>').addClass('column-title').text(this.name);
+        const $columnCardList = $('<ul>').addClass('column-card-list');
+        const $columnDelete = $('<button>').addClass('col-btn-delete').html('<i class="fa fa-trash" aria-hidden="true"></i>');
+        const $columnAddCard = $('<button>').addClass('add-card').text('+');
+        const $columnEdit = $('<button>').addClass('column-edit').html('<i class="fa fa-pencil" aria-hidden="true"></i>');
+        //Column events
+        $columnDelete.on('click', this.removeColumn.bind(this))
+        $columnAddCard.on('click', this.createCard.bind(this))
+        $columnEdit.on('click', this.editColumn.bind(this))
 
-          $columnAddCard.click(function () {
-              var name = "";
-              alertify.prompt("Enter card name", function (e, str) {
-                  if (e) {
-                      name = str;
-                      if (name == "") {
-                          alertify.alert("You have to enter the card name");
-                          return false;
-                      };
-                      event.preventDefault();
-                      $.ajax({
-                          url: baseUrl + '/card',
-                          method: 'POST',
-                          data: {
-                              name: name,
-                              bootcamp_kanban_column_id: self.id
-                          },
-                          success: function (response) {
-                              var card = new Card(response.id, name);
-                              self.addCard(card);
-                          }
-                      });
-                  } else {
-                      return false;
-                  }
-              }, )
-          });
+        //Adding column elements
+        $column.append($columnTitle)
+            .append($columnDelete)
+            .append($columnAddCard)
+            .append($columnCardList)
+            .append($columnEdit);
+        return $column;
+    }
 
+    addCard(card) {
+        this.$element.children('ul').append(card.$element);
+    }
 
-          $columnEdit.click(function () {
-              self.editColumn();
-          });
+    removeColumn() {
+        $.ajax({
+            url: baseUrl + '/column/' + this.id,
+            method: 'DELETE',
+            success: (response) => {
+                this.$element.remove();
+            }
+        })
+    }
 
-          //Adding column elements
-          $column.append($columnTitle)
-              .append($columnDelete)
-              .append($columnAddCard)
-              .append($columnCardList)
-              .append($columnEdit);
+    createCard() {
+        let name = "";
+        console.log(this);
+        alertify.prompt("Enter card name", (e, str) => {
+            if (e) {
+                name = str;
+                if (name == "") {
+                    alertify.alert("You have to enter the card name");
+                    return false;
+                };
+                event.preventDefault();
+                $.ajax({
+                    url: baseUrl + '/card',
+                    method: 'POST',
+                    data: {
+                        name: name,
+                        bootcamp_kanban_column_id: this.id
+                    },
+                    success: (response) => {
+                        let card = new Card(response.id, name);
+                        console.log(this);
+                        this.addCard(card);
+                    }
+                });
+            } else {
+                return false;
+            }
+        }, )
+    }
 
-          return $column;
-      }
-  }
-
-  Column.prototype = {
-
-      addCard: function (card) {
-          this.$element.children('ul').append(card.$element);
-      },
-      removeColumn: function () {
-          var self = this;
-          $.ajax({
-              url: baseUrl + '/column/' + self.id,
-              method: 'DELETE',
-              success: function (response) {
-                  self.$element.remove();
-              }
-          });
-      },
-
-      editColumn: function () {
-          var self = this;
-          var name = "";
-          alertify.prompt("Enter new column name", function (e, str) {
-              if (e) {
-                  name = str;
-                  if (name == "") {
-                      alertify.alert("You have to enter the column name");
-                      return false;
-                  }
-                  $.ajax({
-                      url: baseUrl + '/column/' + self.id,
-                      method: 'PUT',
-                      data: {
-                          name: name
-                      },
-                      success: function (response) {
-                          self.$element.children('.column-title').text(name);
-                          self.name = name;
-                      }
-                  });
-                  
-              } else {
-                  return false;
-              }
-          }, )
-      }
-
-  };
+    editColumn() {
+        let name = "";
+        alertify.prompt("Enter new column name", (e, str) => {
+            if (e) {
+                name = str;
+                if (name == "") {
+                    alertify.alert("You have to enter the column name");
+                    return false;
+                }
+                $.ajax({
+                    url: baseUrl + '/column/' + this.id,
+                    method: 'PUT',
+                    data: {
+                        name: name
+                    },
+                    success: (response) => {
+                        this.$element.children('.column-title').text(name);
+                        this.name = name;
+                    }
+                });
+            } else {
+                return false;
+            }
+        }, )
+    }
+}
