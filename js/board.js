@@ -8,6 +8,18 @@ var board = {
     $element: $('#board .column-container')
 };
 
+
+// const rememberPosition = (itemId, itemText, targetId) => {
+//     $.ajax({
+//         url: baseUrl + '/card/' + this.itemId,
+//         type: 'PUT',
+//         data: {
+//             name: itemText,
+//             bootcamp_kanban_column_id: this.targetId
+//         }
+//     });
+// }
+
 function initSortable() {
     $('.column-card-list').sortable({
             connectWith: '.column-card-list',
