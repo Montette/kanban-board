@@ -1,23 +1,25 @@
-var clockDate = $('<p>').appendTo("#clock");
-var clockTime = $('<p>').appendTo("#clock");
-    
+$('document').ready(() => {
 
-function getDate(){
+	const clockDate = $('<p>').appendTo("#clock");
+	const clockTime = $('<p>').appendTo("#clock");
+	const getDate = () => {
 
-	var date = new Date();
-	
-	var day = date.getDate();
-	var month = date.getMonth() < 10 ? "0" + (date.getMonth() +1) : date.getMonth();
-	var year = date.getFullYear();
-	var hour = date.getHours();
-	var minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-	var second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-	
-	var todayDate = day + "/" + month + "/" + year;
-	var todayTime = hour + ":" + minute + ":" + second;	
+		let date = new Date();
+		let day = date.getDate();
+		let month = date.getMonth() < 10 ? "0" + (date.getMonth() + 1) : date.getMonth();
+		let year = date.getFullYear();
+		let hour = date.getHours();
+		let minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+		let second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
 
-	clockDate.text(todayDate);
-	clockTime.text(todayTime); 
-	setTimeout(function(){getDate()}, 1000);	
-}
-getDate();
+		let todayDate = day + "/" + month + "/" + year;
+		let todayTime = hour + ":" + minute + ":" + second;
+
+		clockDate.text(todayDate);
+		clockTime.text(todayTime);
+		setTimeout( () => {
+			getDate()
+		}, 1000);
+	}
+	getDate();
+})
