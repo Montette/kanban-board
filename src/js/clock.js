@@ -1,5 +1,4 @@
 $('document').ready(() => {
-
 	const clockDate = $('<p>').appendTo("#clock");
 	const clockTime = $('<p>').appendTo("#clock");
 	const getDate = () => {

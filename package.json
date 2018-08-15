@@ -1,39 +1,30 @@
 {
-  "name": "git-learning-2",
+  "name": "Kanban",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "test": "npm-run-all test:*",
-    "test:html": "globstar nu-html-checker *.html",
-    "init-project": "npm install && npm-run-all init:*",
-    "init:dirs": "mkdirp css images js",
-    "init:files": "touch README.md index.html css/style.css js/script.js",
-    "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
-    "build": "npm-run-all build:* test:*",
-    "build:autoprefixer": "autoprefixer-cli css/style.css",
-    "watch": "npm-run-all build -p watch:*"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Montette/git-learning-2.git"
+    "url": "git://github.com/Montette/repository.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Montette/git-learning-2/issues"
-  },
-  "homepage": "https://github.com/Montette/git-learning-2#readme",
   "devDependencies": {
-    "autoprefixer-cli": "^1.0.0",
-    "browser-sync": "^2.23.6",
-    "globstar": "^1.0.0",
-    "mkdirp": "^0.5.1",
-    "node-sass": "^4.7.2",
-    "npm-run-all": "^4.1.2",
-    "nu-html-checker": "^0.1.0",
-    "onchange": "^3.3.0",
-    "rimraf": "^2.6.2"
-  }
+    "browser-sync": "^2.24.4",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babili": "^0.1.4",
+    "gulp-cache": "^1.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-useref": "^3.1.5",
+    "gulp-util": "^3.0.8",
+    "run-sequence": "^2.2.1"
+  },
+  "dependencies": {},
+  "description": "portfolio"
 }

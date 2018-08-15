@@ -9,7 +9,6 @@ const rememberPosition = (itemId, itemText, targetId) => {
     });
 }
 
-
 const board = {
     name: 'Kanban Board',
     $element: $('#board .column-container'),
@@ -40,7 +39,6 @@ const board = {
             .disableSelection();
     }
 };
-
 
 $('.create-column')
     .click(() => {
